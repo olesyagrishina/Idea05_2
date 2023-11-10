@@ -39,9 +39,9 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(notRegisteredUser.getLogin());
         $("[data-test-id='password'] input").setValue(notRegisteredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content")
+        $(".notification")
                 .shouldBe(visible)
-                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"), Duration.ofSeconds(10));
+                .shouldHave(exactText("Ошибка " + " Ошибка! " + " Неверно указан логин или пароль"), Duration.ofSeconds(10));
     }
 
     @Test
@@ -51,8 +51,8 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(blockedUser.getLogin());
         $("[data-test-id='password'] input").setValue(blockedUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldBe(visible)
-                .shouldHave(exactText("Ошибка! Пользователь заблокирован"), Duration.ofSeconds(10));
+        $(".notification").shouldBe(visible)
+                .shouldHave(exactText("Ошибка " + " Ошибка! " + " Пользователь заблокирован"), Duration.ofSeconds(10));
     }
 
     @Test
@@ -63,10 +63,9 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(wrongLogin);
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldBe(visible)
-                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"), Duration.ofSeconds(10));
+        $(".notification").shouldBe(visible)
+                .shouldHave(exactText("Ошибка " + " Ошибка! " + " Неверно указан логин или пароль"), Duration.ofSeconds(10));
     }
-
     @Test
     @DisplayName("Should get error message if login with wrong password")
     void shouldGetErrorIfWrongPassword() {
@@ -75,8 +74,8 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(wrongPassword);
         $("button.button").click();
-        $("[data-test-id='error-notification'] .notification__content").shouldBe(visible)
-                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"), Duration.ofSeconds(10));
+        $(".notification").shouldBe(visible)
+                .shouldHave(exactText("Ошибка " + " Ошибка! " + " Неверно указан логин или пароль"), Duration.ofSeconds(10));
     }
 }
 

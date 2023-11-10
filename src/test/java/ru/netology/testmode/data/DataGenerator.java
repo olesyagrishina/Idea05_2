@@ -23,7 +23,6 @@ public class DataGenerator {
 
     private DataGenerator() {
     }
-
     private static RegistrationDto sendRequest(RegistrationDto user) {
         given()
                 .spec(requestSpec)
@@ -34,7 +33,6 @@ public class DataGenerator {
                 .statusCode(200);
         return user;
     }
-
     public static String getRandomLogin() {
         return faker.name().username();
     }
